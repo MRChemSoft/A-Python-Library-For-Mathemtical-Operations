@@ -81,7 +81,7 @@ exclude_patterns = [
 # a list of builtin themes.
 #
 html_theme = "sphinx_book_theme"
-html_logo = "img/hylleraas-logo.png"
+html_logo = "img/vampyr-logo.png"
 html_title = ""  # project
 html_js_files = [
     "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js",
