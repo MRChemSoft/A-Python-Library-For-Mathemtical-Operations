@@ -1,0 +1,992 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Beryllium atom</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/beryllium_atom';</script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="The Schrödinger equation" href="../harmonic_oscillator_evolution/" />
+    <link rel="prev" title="Setting up your system" href="../../setup/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vampyr-logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/vampyr-logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../">
+                    VAMPyR coven
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../setup/">Setting up your system</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Beryllium atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harmonic_oscillator_evolution/">The Schrödinger equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCMSolvent/">Polarizable continuum model (PCM)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MRChemSoft/vampyr-coven/main?urlpath=lab/tree/content/notebooks/beryllium_atom.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/edit/main/content/notebooks/beryllium_atom.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/issues/new?title=Issue%20on%20page%20%2Fnotebooks/beryllium_atom.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/beryllium_atom.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Beryllium atom</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Beryllium atom&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s2">&quot;Magnar Bjørgve&quot;</span>
+<span class="n">__credit__</span>    <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Magnar Bjørgve&quot;</span><span class="p">,</span> <span class="s2">&quot;Stig Rune Jensen&quot;</span><span class="p">]</span>
+
+<span class="n">__date__</span>      <span class="o">=</span> <span class="s2">&quot;2021-02-16&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="beryllium-atom">
+<h1>Beryllium atom<a class="headerlink" href="#beryllium-atom" title="Permalink to this heading">#</a></h1>
+<p>We solve the Hartree-Fock equations for a closed-shell many-electron system</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\left[\hat{T} + \hat{V}\right]\Phi = \Phi F
+\end{equation*}\]</div>
+<p>In the equation above <span class="math notranslate nohighlight">\(\Phi\)</span> is a row vector of doubly occupied orbitals,
+<span class="math notranslate nohighlight">\(F = \langle\Phi|\hat{T}+\hat{V}|\Phi\rangle\)</span> is the Fock matrix, and
+<span class="math notranslate nohighlight">\(\hat{V} = \hat{V}_{nuc} + 2\hat{J} - \hat{K}\)</span> is the potential operator.
+We here define the nuclear attraction potential</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\hat{V}_{nuc}(r) = \sum_I \frac{-Z_I}{|R_I - r|}
+\end{align*}\]</div>
+<p>with <span class="math notranslate nohighlight">\(Z_I\)</span> and <span class="math notranslate nohighlight">\(R_I\)</span> being the nuclear charges and positions,
+and the Coulomb and Exchange operators</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\hat{J} \varphi_i &amp;= \sum_j \hat{P}[\varphi_j \varphi_j^\dagger] \varphi_i \\
+\hat{K} \varphi_i &amp;= \sum_j \hat{P}[\varphi_i \varphi_j^\dagger] \varphi_j
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{P}\)</span> is the convolution operator with the Poisson kernel <span class="math notranslate nohighlight">\(P=1/r\)</span>.
+We iterate the Hartree-Fock equations in their integral form</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\tilde{\Phi}^{n+1} = -2 \hat{G}^{\vec{\mu}^n}\left[\hat{V} \Phi^n + \Phi^n\left(\Lambda^n - F^n\right)\right]
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{G}^{\vec{\mu}}\)</span> is a vector of convolution operators with the
+bound-state Helmholtz kernel <span class="math notranslate nohighlight">\(G^{\mu} = e^{-\mu r}/r\)</span> and <span class="math notranslate nohighlight">\(\mu_i^n = \sqrt{-2\lambda_i^n}\)</span>
+is a positive real number. <span class="math notranslate nohighlight">\(\Lambda_{ij}^n = \lambda_i^n\delta_{ij}\)</span> is a diagonal matrix containing
+the same parameters as used in the construction of the Helmholz vector. In practice we choose
+<span class="math notranslate nohighlight">\(\lambda_i^n = F_{ii}^n\)</span> such that diagonal elements vanish in <span class="math notranslate nohighlight">\(\left(\Lambda^n - F^n\right)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vampyr</span> <span class="kn">import</span> <span class="n">vampyr3d</span> <span class="k">as</span> <span class="n">vp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">LA</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelmholtzOperator</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vectorized Helmholtz operator</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mra : The multiresolution analysis we work on</span>
+<span class="sd">    lamb : vector of lambda parameters, mu_i = sqrt(-2*lambda_i)</span>
+<span class="sd">    prec : Precision requirement</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    operators : list containing HelmholtzOperators for each orbital</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mra</span><span class="p">,</span> <span class="n">lamb</span><span class="p">,</span> <span class="n">prec</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mra</span> <span class="o">=</span> <span class="n">mra</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lamb</span> <span class="o">=</span> <span class="n">lamb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="n">prec</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">operators</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">mu</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="o">*</span><span class="n">l</span><span class="p">)</span> <span class="k">if</span> <span class="n">l</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">1.0</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lamb</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mu</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vp</span><span class="o">.</span><span class="n">HelmholtzOperator</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mra</span><span class="p">,</span> <span class="n">exp</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Psi</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Operate the Helmholtz operator onto an orbital vector&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">operators</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Psi</span><span class="p">))])</span>
+
+<span class="k">class</span> <span class="nc">ExchangeOperator</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vectorized Exchange operator</span>
+
+<span class="sd">    K(phi) = \sum_i P[phi * psi_i] * psi_i</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mra : The multiresolution analysis we work on</span>
+<span class="sd">    Psi : Orbital vector defining the operator</span>
+<span class="sd">    prec : Precision requirement</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    poisson : Poisson Operator</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mra</span><span class="p">,</span> <span class="n">Psi</span><span class="p">,</span> <span class="n">prec</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mra</span> <span class="o">=</span> <span class="n">mra</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Psi</span> <span class="o">=</span> <span class="n">Psi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="n">prec</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poisson</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">PoissonOperator</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="n">mra</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Phi</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply the exchange operator onto an orbital vector Phi&quot;&quot;&quot;</span>
+
+        <span class="n">Phi_out</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Phi</span><span class="p">)):</span>
+            <span class="n">V_j0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">Phi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">V_j0</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">)):</span>
+                <span class="n">V_ji</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">Phi</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">tmp</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">V_ji</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">*=</span> <span class="mf">4.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">Phi_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">phi</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span> <span class="k">for</span> <span class="n">phi</span> <span class="ow">in</span> <span class="n">Phi_out</span><span class="p">])</span>
+
+<span class="k">class</span> <span class="nc">KineticEnergyOperator</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mra</span><span class="p">,</span> <span class="n">prec</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="n">prec</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mra</span> <span class="o">=</span> <span class="n">mra</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">derivative</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">ABGVDerivative</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">laplace_operator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Phi</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">laplace_operator</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span> <span class="k">for</span> <span class="n">phi</span> <span class="ow">in</span> <span class="n">Phi</span><span class="p">])</span>
+
+<span class="k">class</span> <span class="nc">CouloumbOperator</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vectorized Couloumb operator</span>
+
+<span class="sd">    J(phi) = \sum_i P[psi_i * psi_i] * phi</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mra : The multiresolution analysis we work on</span>
+<span class="sd">    Psi : Orbital vector defining the operator</span>
+<span class="sd">    prec : Precision requirement</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    poisson : Poisson operator</span>
+<span class="sd">    potential : Coulomb potential</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mra</span><span class="p">,</span> <span class="n">Psi</span><span class="p">,</span> <span class="n">prec</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mra</span> <span class="o">=</span> <span class="n">mra</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Psi</span> <span class="o">=</span> <span class="n">Psi</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="n">prec</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poisson</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">PoissonOperator</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="n">mra</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rho</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">)):</span>
+            <span class="n">rho</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Psi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">rho</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Phi</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply Couloumb operator onto an orbital vector Phi&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="bp">self</span><span class="o">.</span><span class="n">potential</span><span class="o">*</span><span class="n">phi</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span> <span class="k">for</span> <span class="n">phi</span> <span class="ow">in</span> <span class="n">Phi</span><span class="p">])</span>
+
+
+
+<span class="k">class</span> <span class="nc">NuclearOperator</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vectorized Nuclear potential operator</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mra : The multiresolution analysis we work on</span>
+<span class="sd">    atoms : List of dicts containing charge and coordinates of the atoms</span>
+<span class="sd">    prec : Precision requirement</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    potential : Nuclear potential</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mra</span><span class="p">,</span> <span class="n">atoms</span><span class="p">,</span> <span class="n">prec</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mra</span> <span class="o">=</span> <span class="n">mra</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="o">=</span> <span class="n">prec</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">atoms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Project analytic function onto MRA basis</span>
+        <span class="n">P_mra</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">ScalingProjector</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mra</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span>
+        <span class="n">f_nuc</span> <span class="o">=</span> <span class="n">NuclearFunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">potential</span> <span class="o">=</span> <span class="n">P_mra</span><span class="p">(</span><span class="n">f_nuc</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Phi</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply nuclear potential operator onto an orbital vector&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="bp">self</span><span class="o">.</span><span class="n">potential</span><span class="o">*</span><span class="n">phi</span><span class="p">)</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prec</span><span class="p">)</span> <span class="k">for</span> <span class="n">phi</span> <span class="ow">in</span> <span class="n">Phi</span><span class="p">])</span>
+
+<span class="k">class</span> <span class="nc">NuclearFunction</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Vectorized Nuclear potential operator</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    atoms : List of dicts containing charge and coordinates of the atoms</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atoms</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span> <span class="o">=</span> <span class="n">atoms</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="s2">&quot;Returns the nuclear potential value in R&quot;</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">atoms</span><span class="p">:</span>
+            <span class="n">Z</span> <span class="o">=</span> <span class="n">atom</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+            <span class="n">R</span> <span class="o">=</span> <span class="n">atom</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span>
+            <span class="n">R2</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">tmp</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Z</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scf_solver</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">atoms</span><span class="p">,</span> <span class="n">Phi_n</span><span class="p">,</span> <span class="n">F_n</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kinetric-free Hartree-Fock SCF solver</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    mra : The Multiresolution analysis to work on</span>
+<span class="sd">    atoms : List of dicts containing charge and coordinates of the atoms</span>
+<span class="sd">    Phi_n : Starting guess orbitals</span>
+<span class="sd">    F_n : Starting guess for Fock matrix</span>
+<span class="sd">    precision : Precision requirement</span>
+<span class="sd">    threshold : Usually set to the same as precision, set to -1 to limit iterations by max_iter</span>
+<span class="sd">    max_iter : Set maximum iterations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    Updates : Vector of orbital residual norms at each iteration</span>
+<span class="sd">    Energies : List of energy contributions at each iteration</span>
+<span class="sd">    Phi_n : Converged orbital vector</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Setup nuclear potential</span>
+    <span class="n">V_nuc</span> <span class="o">=</span> <span class="n">NuclearOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">atoms</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+
+    <span class="c1"># Loop parameters</span>
+    <span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># Iteration counter</span>
+    <span class="n">update</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">))</span> <span class="c1"># Initialize error measure (norm of orbital updates)</span>
+    <span class="n">updates</span> <span class="o">=</span> <span class="p">[]</span>                 <span class="c1"># Will capture wavefunction updates for visusualization</span>
+    <span class="n">energies</span> <span class="o">=</span> <span class="p">[]</span>                <span class="c1"># Will capture energies for visualization</span>
+
+    <span class="c1"># SCF loop</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">update</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">iteration</span> <span class="o">&gt;</span> <span class="n">max_iter</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Initialize operators for first iteration</span>
+        <span class="n">J_n</span> <span class="o">=</span> <span class="n">CouloumbOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">Phi_n</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+        <span class="n">K_n</span> <span class="o">=</span> <span class="n">ExchangeOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">Phi_n</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+
+        <span class="c1"># Initialize vector of Helmholtz operators based on Fock matrix diagonal</span>
+        <span class="n">Lambda_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">F_n</span><span class="p">))</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">HelmholtzOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Lambda_n</span><span class="p">),</span> <span class="n">precision</span><span class="p">)</span>
+
+        <span class="c1"># Apply potential operator to all orbitals</span>
+        <span class="n">VPhi</span> <span class="o">=</span> <span class="n">V_nuc</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">J_n</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">)</span> <span class="o">-</span> <span class="n">K_n</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">)</span>
+        <span class="n">KinOpr</span> <span class="o">=</span> <span class="n">KineticEnergyOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+
+        <span class="c1"># Apply Helmholtz operators to all orbitals</span>
+        <span class="n">Phi_np1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">G</span><span class="p">(</span><span class="n">VPhi</span> <span class="o">+</span> <span class="p">(</span><span class="n">Lambda_n</span> <span class="o">-</span> <span class="n">F_n</span><span class="p">)</span> <span class="o">@</span> <span class="n">Phi_n</span><span class="p">)</span>
+        <span class="n">dPhi_n</span> <span class="o">=</span> <span class="n">Phi_np1</span> <span class="o">-</span> <span class="n">Phi_n</span>
+        <span class="n">update</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">phi</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span> <span class="k">for</span> <span class="n">phi</span> <span class="ow">in</span> <span class="n">dPhi_n</span><span class="p">])</span>
+
+        <span class="c1"># Compute overlap matrices</span>
+        <span class="n">S_tilde</span> <span class="o">=</span> <span class="n">calc_overlap</span><span class="p">(</span><span class="n">Phi_np1</span><span class="p">,</span> <span class="n">Phi_np1</span><span class="p">)</span>
+
+        <span class="c1"># Löwdin orthonormalization S^{-1/2} = U * Sigma^{-1/2} * U^T</span>
+        <span class="n">sigma</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">S_tilde</span><span class="p">)</span>
+        <span class="n">Sm5</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span> <span class="o">@</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="n">Phi_bar</span> <span class="o">=</span> <span class="n">Sm5</span> <span class="o">@</span> <span class="n">Phi_np1</span>
+
+        <span class="c1"># Initialize n+1 operators</span>
+        <span class="n">J_np1</span> <span class="o">=</span> <span class="n">CouloumbOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">Phi_bar</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+        <span class="n">K_np1</span> <span class="o">=</span> <span class="n">ExchangeOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">Phi_bar</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+
+        <span class="c1"># Prepare for next iteration</span>
+        <span class="n">Phi_n</span> <span class="o">=</span> <span class="n">Phi_bar</span>
+        <span class="n">VPhikin</span> <span class="o">=</span> <span class="n">V_nuc</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">J_np1</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">)</span> <span class="o">-</span> <span class="n">K_np1</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">)</span> <span class="o">+</span> <span class="n">KinOpr</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">)</span>
+        <span class="n">F_n</span> <span class="o">=</span> <span class="n">calc_overlap</span><span class="p">(</span><span class="n">Phi_n</span><span class="p">,</span> <span class="n">VPhikin</span><span class="p">)</span>
+
+        <span class="c1"># Compute energy contributions</span>
+        <span class="n">energy</span> <span class="o">=</span> <span class="n">calc_energies</span><span class="p">(</span><span class="n">F_n</span><span class="p">,</span> <span class="n">Phi_n</span><span class="p">,</span> <span class="n">V_nuc</span><span class="p">,</span> <span class="n">J_np1</span><span class="p">,</span> <span class="n">K_np1</span><span class="p">)</span>
+
+        <span class="c1"># Collect output</span>
+        <span class="n">updates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">update</span><span class="p">)</span>
+        <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">iteration</span><span class="p">,</span> <span class="s2">&quot; |  E_tot:&quot;</span><span class="p">,</span> <span class="n">energy</span><span class="p">[</span><span class="s2">&quot;$E_</span><span class="si">{tot}</span><span class="s2">$&quot;</span><span class="p">],</span> <span class="s2">&quot; |  dPhi:&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">update</span><span class="p">))</span>
+        <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">updates</span><span class="p">),</span> <span class="n">energies</span><span class="p">,</span> <span class="n">Phi_n</span>
+
+
+<span class="k">def</span> <span class="nf">calc_energies</span><span class="p">(</span><span class="n">F_mat</span><span class="p">,</span> <span class="n">Phi</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">K</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;Calcuate all energy contributions&quot;&quot;&quot;</span>
+
+    <span class="n">V_mat</span> <span class="o">=</span> <span class="n">calc_overlap</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">V</span><span class="p">(</span><span class="n">Phi</span><span class="p">))</span>
+    <span class="n">J_mat</span> <span class="o">=</span> <span class="n">calc_overlap</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">J</span><span class="p">(</span><span class="n">Phi</span><span class="p">))</span>
+    <span class="n">K_mat</span> <span class="o">=</span> <span class="n">calc_overlap</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">K</span><span class="p">(</span><span class="n">Phi</span><span class="p">))</span>
+
+    <span class="n">E_orb</span>  <span class="o">=</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">F_mat</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+    <span class="n">E_en</span>   <span class="o">=</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">V_mat</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+    <span class="n">E_coul</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">J_mat</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+    <span class="n">E_ex</span>   <span class="o">=</span> <span class="o">-</span><span class="n">K_mat</span><span class="o">.</span><span class="n">trace</span><span class="p">()</span>
+    <span class="n">E_tot</span>  <span class="o">=</span> <span class="n">E_orb</span> <span class="o">-</span> <span class="n">E_coul</span> <span class="o">-</span> <span class="n">E_ex</span>
+    <span class="n">E_kin</span>  <span class="o">=</span> <span class="n">E_tot</span> <span class="o">-</span> <span class="n">E_en</span> <span class="o">-</span> <span class="n">E_coul</span> <span class="o">-</span> <span class="n">E_ex</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;$E_</span><span class="si">{orb}</span><span class="s2">$&quot;</span><span class="p">:</span> <span class="n">E_orb</span><span class="p">,</span>
+        <span class="s2">&quot;$E_</span><span class="si">{en}</span><span class="s2">$&quot;</span><span class="p">:</span> <span class="n">E_en</span><span class="p">,</span>
+        <span class="s2">&quot;$E_</span><span class="si">{coul}</span><span class="s2">$&quot;</span><span class="p">:</span> <span class="n">E_coul</span><span class="p">,</span>
+        <span class="s2">&quot;$E_</span><span class="si">{ex}</span><span class="s2">$&quot;</span><span class="p">:</span> <span class="n">E_ex</span><span class="p">,</span>
+        <span class="s2">&quot;$E_</span><span class="si">{kin}</span><span class="s2">$&quot;</span><span class="p">:</span> <span class="n">E_kin</span><span class="p">,</span>
+        <span class="s2">&quot;$E_</span><span class="si">{tot}</span><span class="s2">$&quot;</span><span class="p">:</span> <span class="n">E_tot</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">calc_overlap</span><span class="p">(</span><span class="n">Bra</span><span class="p">,</span> <span class="n">Ket</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the overlap matrix between the orbitals &lt;Bra| and |Ket&gt;</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    Bra : bra vector &lt;Phi|</span>
+<span class="sd">    Ket : ket vector |Phi&gt;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    Overlap matrix</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Bra</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">Ket</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Bra</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ket</span><span class="p">)):</span>
+            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Bra</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Ket</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">S</span>
+
+
+<span class="k">def</span> <span class="nf">starting_guess</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">atom</span><span class="p">,</span> <span class="n">n_orbs</span><span class="p">,</span> <span class="n">prec</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Primitive starting guess, works for Be&quot;&quot;&quot;</span>
+
+    <span class="c1"># Define projector onto the MRA basis</span>
+    <span class="n">P_mra</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">ScalingProjector</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="n">mra</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="n">prec</span><span class="p">)</span>
+
+    <span class="n">Phi</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_orbs</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">R0</span> <span class="o">=</span> <span class="n">atom</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span>
+        <span class="k">def</span> <span class="nf">f_gauss</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+            <span class="n">R2</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">R0</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">R0</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">R0</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">R2</span><span class="o">/</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="n">phi</span> <span class="o">=</span> <span class="n">P_mra</span><span class="p">(</span><span class="n">f_gauss</span><span class="p">)</span>
+        <span class="n">phi</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+        <span class="n">Phi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+    <span class="n">Phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Phi</span><span class="p">)</span>
+
+    <span class="c1"># Löwdin orthonormalization S^{-1/2} = U * Sigma^{-1/2} * U^T</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">calc_overlap</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">Phi</span><span class="p">)</span>
+    <span class="n">sigma</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">Sm5</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span> <span class="o">@</span> <span class="n">U</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">Sm5</span> <span class="o">@</span> <span class="n">Phi</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define molecule</span>
+<span class="n">mol</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;Z&quot;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]}</span>
+<span class="p">]</span>
+
+<span class="c1"># Set target precision</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
+
+<span class="c1"># Define MRA basis and computational domain</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>                       <span class="c1"># Polynomial order of MRA basis</span>
+<span class="n">world</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>           <span class="c1"># Computational domain [-L,L]^3 (a.u.)</span>
+<span class="n">MRA</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">MultiResolutionAnalysis</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="n">world</span><span class="p">)</span>
+
+<span class="c1"># Setup guess for the orbitals and the Fock matrix</span>
+<span class="n">Phi_n</span> <span class="o">=</span> <span class="n">starting_guess</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="n">MRA</span><span class="p">,</span> <span class="n">atom</span><span class="o">=</span><span class="n">mol</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_orbs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
+<span class="n">F_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run SCF solver to optimize the orbitals</span>
+<span class="n">orbital_updates</span><span class="p">,</span> <span class="n">energies</span><span class="p">,</span> <span class="n">Phi_n</span> <span class="o">=</span> <span class="n">scf_solver</span><span class="p">(</span><span class="n">MRA</span><span class="p">,</span> <span class="n">mol</span><span class="p">,</span> <span class="n">Phi_n</span><span class="p">,</span> <span class="n">F_n</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0  |  E_tot: -12.158806160497663  |  dPhi: 0.9554261103233852
+1  |  E_tot: -13.910545962062471  |  dPhi: 0.6030032083595198
+2  |  E_tot: -14.425154911621195  |  dPhi: 0.11248971009686566
+3  |  E_tot: -14.550559502300937  |  dPhi: 0.056367744794410625
+4  |  E_tot: -14.573091352701868  |  dPhi: 0.024464066721782796
+5  |  E_tot: -14.576656010668405  |  dPhi: 0.009607118621517596
+6  |  E_tot: -14.577184437878596  |  dPhi: 0.0036909439005734903
+7  |  E_tot: -14.577255599761454  |  dPhi: 0.0017015854922230098
+8  |  E_tot: -14.577262672068981  |  dPhi: 0.0009093846224262461
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "MRChemSoft/vampyr-coven",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../setup/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Setting up your system</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../harmonic_oscillator_evolution/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Schrödinger equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, The contributors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

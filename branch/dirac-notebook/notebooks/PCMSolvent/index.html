@@ -1,0 +1,897 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Polarizable continuum model (PCM)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/PCMSolvent';</script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="prev" title="The Schrödinger equation" href="../harmonic_oscillator_evolution/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vampyr-logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/vampyr-logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../">
+                    VAMPyR coven
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../setup/">Setting up your system</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../beryllium_atom/">Beryllium atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harmonic_oscillator_evolution/">The Schrödinger equation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Polarizable continuum model (PCM)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MRChemSoft/vampyr-coven/main?urlpath=lab/tree/content/notebooks/PCMSolvent.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/edit/main/content/notebooks/PCMSolvent.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/issues/new?title=Issue%20on%20page%20%2Fnotebooks/PCMSolvent.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/PCMSolvent.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Polarizable continuum model (PCM)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Polarizable continuum model (PCM).&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s2">&quot;Gabriel Gerez&quot;</span>
+<span class="n">__credit__</span>    <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Gabriel Gerez&quot;</span><span class="p">]</span>
+
+<span class="n">__date__</span>      <span class="o">=</span> <span class="s2">&quot;2023-08-28&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary packages</span>
+<span class="kn">from</span> <span class="nn">vampyr</span> <span class="kn">import</span> <span class="n">vampyr3d</span> <span class="k">as</span> <span class="n">vp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="polarizable-continuum-model-pcm">
+<h1>Polarizable continuum model (PCM)<a class="headerlink" href="#polarizable-continuum-model-pcm" title="Permalink to this heading">#</a></h1>
+<p>Polarizable continuum models have been used for almost half a century to describe solvation effects in quantum chemistry <span id="id1">[]</span>.
+This method has proved itself an effective way to reduce the degrees of freedom necessary to compute solvent effects, as no
+solvent molecules are explicitly included in the calculation.</p>
+<p>PCM treats the solvent as an isotropic continuum characterized by its permittivity, obtained from the
+solvent’s bulk properties. The solute is described at the quantum level, and their interaction is
+represented through an electrostatic potential supported on the so-called cavity of the solute. Below, we
+detail the mathematical formulation of this model and provide a practical example of how it can be
+implemented.</p>
+<p>The cavity is the area where the solute is located and we define it using an interlocking spheres
+model where the spheres are centered in the atoms of the solute and the radii of the spheres is usually the
+vdW-radii.</p>
+<p>In our case we define a cavity function as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-803620be-e737-4fd5-9301-13041be09bfd">
+<span class="eqno">(1)<a class="headerlink" href="#equation-803620be-e737-4fd5-9301-13041be09bfd" title="Permalink to this equation">#</a></span>\[\begin{align}
+C(\vec{r}) = \begin{cases}0 &amp; \mathbf{r}\text{ inside cavity} \\
+1 &amp; \mathbf{r} \text{ outside cavity}\end{cases}
+\end{align}\]</div>
+<p>In our implementation we defined the boundary of the cavity to be smooth by use of the error function.
+Below we outline the mathemathical details of our implementation.</p>
+<p>Each i-th sphere is defined by a center <span class="math notranslate nohighlight">\(\mathbf{r}_i\)</span> and a radius <span class="math notranslate nohighlight">\(R_i\)</span> and the cavity function is defined as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c906d33f-9391-434d-8b9b-9c4de1bb534a">
+<span class="eqno">(2)<a class="headerlink" href="#equation-c906d33f-9391-434d-8b9b-9c4de1bb534a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+C_i(\mathbf{r}) = \frac{1}{2} \left( 1 + \text{erf} \left( \frac{|\mathbf{r} - \mathbf{r}_i| - R_i}{ \sigma} \right) \right),
+\end{equation}\]</div>
+<p>where erf is the error function and <span class="math notranslate nohighlight">\(\sigma\)</span> is a parameter that controls the width of the boundary.</p>
+<p>The total cavity function is then defined as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5c325639-7fb7-4391-aa22-87fa23528fb1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-5c325639-7fb7-4391-aa22-87fa23528fb1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+C(\mathbf{r}) = 1 - \prod_i \left(1-C_i(\mathbf{r})\right).
+\end{equation}\]</div>
+<p>This has been implemented as a class below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Cavity</span><span class="p">():</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cav_coords</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">centers</span> <span class="o">=</span> <span class="n">cav_coords</span> <span class="c1"># list of cavity centers. Normally, but not always, nucleus coordinates. </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radii</span> <span class="o">=</span> <span class="n">radii</span>  <span class="c1"># list of cavity radii. Normally, but not always, nucleus radii.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="n">width</span>  <span class="c1"># width of the cavity boundary</span>
+   
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">r</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        r is a list of floats of length 3, can be a numpy array as well</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centers</span><span class="p">):</span>
+            <span class="n">r_vec_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_i</span><span class="p">)</span>
+            <span class="n">s_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">r_vec_i</span> <span class="o">-</span> <span class="n">r_vec</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">radii</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">O_i</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="n">s_i</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">))</span>
+            <span class="n">C_i</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">O_i</span>
+            <span class="n">C</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">C_i</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">C</span>
+        <span class="k">return</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The electrostatic potential <span class="math notranslate nohighlight">\(V(\mathbf{r})\)</span> satisfies the generalized Poisson equation (GPE)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dcb05c0d-3a54-489a-ae34-fb813fb38dae">
+<span class="eqno">(4)<a class="headerlink" href="#equation-dcb05c0d-3a54-489a-ae34-fb813fb38dae" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\nabla \cdot (\varepsilon(\mathbf{r}) \nabla V(\mathbf{r})) = -4\pi \rho(\mathbf{r}),
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho(\mathbf{r}\)</span> is the total total density of the solute including both electronic, <span class="math notranslate nohighlight">\(\rho_{el}\)</span> and nuclear <span class="math notranslate nohighlight">\(\rho_{nuc}\)</span> densities,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ac22b978-60d8-4a1f-90cc-5268f631ccfd">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ac22b978-60d8-4a1f-90cc-5268f631ccfd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\rho(\mathbf{r}) = \rho_{el}(\mathbf{r}) +  \rho_{nuc}(\mathbf{r}),
+\end{equation}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\varepsilon(\mathbf{r})\)</span> is the position dependent permittivity parametrized using the cavity of the solute where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c4d551f2-b4a7-4037-92a8-b934018f5dbb">
+<span class="eqno">(6)<a class="headerlink" href="#equation-c4d551f2-b4a7-4037-92a8-b934018f5dbb" title="Permalink to this equation">#</a></span>\[\begin{align}
+\varepsilon(\mathbf{r}) = \begin{cases}\varepsilon_0 &amp; \mathbf{r}~\text{inside}~\text{cavity} \\
+\varepsilon_r &amp; \mathbf{r}~\text{outside}~ \text{cavity}.\end{cases}
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varepsilon_0\)</span> is the permittivity of free space and <span class="math notranslate nohighlight">\(\varepsilon_r\)</span> is the relative permittivity of the solvent.</p>
+<p>We have defined the permittivity function as follows</p>
+<div class="amsmath math notranslate nohighlight" id="equation-215d56d3-cb7f-4bd3-994c-419415e96058">
+<span class="eqno">(7)<a class="headerlink" href="#equation-215d56d3-cb7f-4bd3-994c-419415e96058" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\varepsilon(\mathbf{r}) = \varepsilon_0  \exp\left(\log\left[\frac{\varepsilon_r}{ \varepsilon_0}\right]\left(1 - C(\mathbf{r})\right)\right).
+\end{equation}\]</div>
+<p>This has been implemented as a class below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Permittivity</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cavity</span><span class="p">,</span> <span class="n">inside</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">outside</span><span class="o">=</span><span class="mf">2.0</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="n">cavity</span> <span class="c1"># instance of cavity class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inside</span> <span class="o">=</span> <span class="n">inside</span> <span class="c1"># permittivity of free space</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outside</span> <span class="o">=</span> <span class="n">outside</span> <span class="c1"># permittivity of solvent</span>
+    
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="n">C_eval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">permittivity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inside</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">outside</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">inside</span><span class="p">)))</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">C_eval</span><span class="p">))</span>
+    
+        <span class="k">return</span> <span class="n">permittivity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The electrostatic potential can be divided into two contributions, the solute-solvent interaction reaction potential <span class="math notranslate nohighlight">\(V_R\)</span> (also normally simply called reaction potential), and the vacuum potential <span class="math notranslate nohighlight">\(V_{vac}\)</span>,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a5cf757f-6876-4d96-9393-d4f3800ff183">
+<span class="eqno">(8)<a class="headerlink" href="#equation-a5cf757f-6876-4d96-9393-d4f3800ff183" title="Permalink to this equation">#</a></span>\[\begin{equation}
+V(\mathbf{r}) = V_R(\mathbf{r}) + V_{vac}(\mathbf{r}),
+\end{equation}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ad243079-862b-4f92-a6c7-7f4831225ea9">
+<span class="eqno">(9)<a class="headerlink" href="#equation-ad243079-862b-4f92-a6c7-7f4831225ea9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\nabla^2 V_{vac}(\mathbf{r}) = -4\pi \rho(\mathbf{r}).
+\end{equation}\]</div>
+<p>The energy contribution from the reaction potential, <span class="math notranslate nohighlight">\(E_R\)</span> is given as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0543e4a9-0e0d-4a4e-a56e-707440604e27">
+<span class="eqno">(10)<a class="headerlink" href="#equation-0543e4a9-0e0d-4a4e-a56e-707440604e27" title="Permalink to this equation">#</a></span>\[\begin{equation}
+E_R =\frac{1}{2} \int d\mathbf{r}V_R(\mathbf{r})\rho(\mathbf{r}).
+\end{equation}\]</div>
+<p>Since this energy is only dependent on the reaction potential, we want to directly solve for it.</p>
+<p>Resolving the chain rule, substituting in equations 8 and 9, and collecting terms gives us the following expression for the reaction potential</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7bdbe075-854c-4ce9-b099-09cf79d7d2d7">
+<span class="eqno">(11)<a class="headerlink" href="#equation-7bdbe075-854c-4ce9-b099-09cf79d7d2d7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\nabla^2  V_R(\mathbf{r})  = -4\pi\left( \frac{\rho(\mathbf{r})}{\varepsilon(\mathbf{r})} -\rho(\mathbf{r})\right) - \frac{\nabla \varepsilon(\mathbf{r}) \cdot \nabla V(\mathbf{r})}{\varepsilon(\mathbf{r})}
+\end{equation}\]</div>
+<p>We solve directly for the reaction potential by applying the Poisson operator <span class="math notranslate nohighlight">\(P(\mathbf{r})\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-6d7d39bb-0e74-4ec8-b1cb-ac7247e94bfd">
+<span class="eqno">(12)<a class="headerlink" href="#equation-6d7d39bb-0e74-4ec8-b1cb-ac7247e94bfd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+V_R(\mathbf{r})  = P(\mathbf{r}) \star\left[ \rho_{eff}(\mathbf{r}) + \gamma_s(\mathbf{r}) \right]
+\end{equation}\]</div>
+<p>where we did the following substitutions</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e7f43e4e-5a3f-48a5-aca7-68dfdc88eca1">
+<span class="eqno">(13)<a class="headerlink" href="#equation-e7f43e4e-5a3f-48a5-aca7-68dfdc88eca1" title="Permalink to this equation">#</a></span>\[\begin{align}
+\rho_{eff}(\mathbf{r}) = 4\pi \left(\frac{\rho(\mathbf{r})}{\varepsilon(\mathbf{r})} - \rho(\mathbf{r})\right) \\
+~\\
+\gamma_s(\mathbf{r}) = \frac{\nabla \varepsilon(\mathbf{r}) \cdot \nabla V(\mathbf{r})}{\varepsilon(\mathbf{r})}
+\end{align}\]</div>
+<p>which we call respectively the effective molecular density <span class="math notranslate nohighlight">\(\rho_{eff}\)</span> and the surface charge distribution <span class="math notranslate nohighlight">\(\gamma_s\)</span>.</p>
+<p>Note that the Reaction potential must be solved iteratively since it appears on both sides of equation 12 through the total electrostatic potential <span class="math notranslate nohighlight">\(V\)</span> which is part of <span class="math notranslate nohighlight">\(\gamma_s\)</span> as shown in equation 13.</p>
+<p>Below is an implementation of the self consistent procedure for the reaction potential for a single positive charge inside a sphere cavity of unit radius.
+We start by defining several functions to compute the objects needed for the reaction potential</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">constructChargeDensity</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">charges</span><span class="p">,</span> <span class="n">width_parameter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the charge density of a set of point charges using a Gaussian</span>
+<span class="sd">    function. The Gaussian function is centered at the position of the charge</span>
+<span class="sd">    and the width parameter is the standard deviation of the Gaussian.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        positions (list of lists of floats): list of positions of the charges</span>
+<span class="sd">        charges (list of floats): list of charges</span>
+<span class="sd">        width_parameter (int, optional): Standard deviation of the Gaussian. Defaults to 1000.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        function: function that computes the charge density at a given position</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">charge_density</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">GaussExp</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">charge</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">charges</span><span class="p">):</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="n">width_parameter</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">3.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span>
+        <span class="n">charge_density</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vp</span><span class="o">.</span><span class="n">GaussFunc</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="o">*</span><span class="n">charge</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">poly_exponent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">charge_density</span>
+
+
+<span class="k">def</span> <span class="nf">computeGamma</span><span class="p">(</span><span class="n">Derivative_op</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">permittivity</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes gamma_s for a given permittivity and potential.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Derivative_op (vp.ABGVDerivative): Derivative operator</span>
+<span class="sd">        V (vp.FunctionTree): Potential used to compute gamma_s</span>
+<span class="sd">        permittivity (vp.FunctionTree): permittivity function of the solvent</span>
+<span class="sd">        epsilon (float): crop precision</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        _type_: _description_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gamma</span> <span class="o">=</span>  <span class="n">vp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vp</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">Derivative_op</span><span class="p">,</span><span class="n">V</span><span class="p">),</span> <span class="n">vp</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">Derivative_op</span><span class="p">,</span> <span class="n">permittivity</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="n">permittivity</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="n">epsilon</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gamma</span><span class="o">.</span><span class="n">deepCopy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Initialize the Multiresolution analysis</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">MRA</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">MultiResolutionAnalysis</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">box</span><span class="o">=</span><span class="n">L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MRA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>================================================================
+                    MultiResolution Analysis                    
+----------------------------------------------------------------
+ polynomial order      : 5
+ polynomial type       : Interpolating
+----------------------------------------------------------------
+ total boxes           : 8
+ boxes                 : [          2           2           2 ]
+ unit lengths          : [  10.000000   10.000000   10.000000 ]
+ scaling factor        : [   1.250000    1.250000    1.250000 ]
+ lower bounds          : [ -10.000000  -10.000000  -10.000000 ]
+ upper bounds          : [  10.000000   10.000000   10.000000 ]
+ total length          : [  20.000000   20.000000   20.000000 ]
+================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<p>Initialize all operators that will be used</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">Projection_op</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">ScalingProjector</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="n">MRA</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
+<span class="n">Derivative_op</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">ABGVDerivative</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="n">MRA</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">Poisson_op</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">PoissonOperator</span><span class="p">(</span><span class="n">mra</span><span class="o">=</span><span class="n">MRA</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute the density of the solute</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">charge_coords</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0000000000</span><span class="p">,</span>    <span class="mf">0.0000000000</span><span class="p">,</span>    <span class="mf">0.000000000</span><span class="p">]]</span>
+<span class="n">charges</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="n">charge_width</span> <span class="o">=</span> <span class="mf">1000.0</span>
+<span class="n">dens</span> <span class="o">=</span> <span class="n">Projection_op</span><span class="p">(</span><span class="n">constructChargeDensity</span><span class="p">(</span><span class="n">charge_coords</span><span class="p">,</span> <span class="n">charges</span><span class="p">,</span> <span class="n">width_parameter</span><span class="o">=</span><span class="n">charge_width</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Project the permittivity of the solvent</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cav_coords</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0000000000</span><span class="p">,</span>    <span class="mf">0.0000000000</span><span class="p">,</span>    <span class="mf">0.000000000</span><span class="p">]]</span> <span class="c1"># list of cavity centers. Normally, but not always, nucleus coordinates.</span>
+<span class="n">cav_radii</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="c1"># list of cavity radii. Normally, but not always, nucleus radii.</span>
+<span class="n">boundary_width</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># width of the cavity boundary</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">Cavity</span><span class="p">(</span><span class="n">cav_coords</span><span class="p">,</span> <span class="n">cav_radii</span><span class="p">,</span> <span class="n">boundary_width</span><span class="p">)</span>
+<span class="n">perm</span> <span class="o">=</span> <span class="n">Projection_op</span><span class="p">(</span><span class="n">Permittivity</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">inside</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">outside</span><span class="o">=</span><span class="mf">2.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Construct the effective solute density as defined above and compute the vacuum potential <span class="math notranslate nohighlight">\(V_{vac}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho_eff</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">dens</span> <span class="o">*</span> <span class="p">(</span><span class="n">perm</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="o">-</span> <span class="p">(</span><span class="n">dens</span><span class="p">))</span>
+<span class="n">V_vac</span> <span class="o">=</span><span class="n">Poisson_op</span><span class="p">((</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">dens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute the zero-th reaction potential before the iterative procedure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gamma_0</span> <span class="o">=</span> <span class="n">computeGamma</span><span class="p">(</span><span class="n">Derivative_op</span><span class="p">,</span> <span class="n">V_vac</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">V_R</span> <span class="o">=</span> <span class="n">Poisson_op</span><span class="p">(</span><span class="n">rho_eff</span> <span class="o">+</span> <span class="n">gamma_0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Iterate throught the application of the Poisson operator to compute the reaction potential</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">update</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">E_r_old</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iter.</span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">2</span><span class="si">}</span><span class="s2">Norm</span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">12</span><span class="si">}</span><span class="s2">Update</span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">10</span><span class="si">}</span><span class="s2">Energy (a.u.)</span><span class="si">{</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">3</span><span class="si">}</span><span class="s2">Energy update (a.u.)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">75</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+    <span class="n">V_tot</span> <span class="o">=</span> <span class="n">V_vac</span> <span class="o">+</span> <span class="n">V_R</span>
+                
+    <span class="c1"># compute the surface charge distribution </span>
+    <span class="n">gamma_s</span> <span class="o">=</span> <span class="n">computeGamma</span><span class="p">(</span><span class="n">Derivative_op</span><span class="p">,</span> <span class="n">V_tot</span><span class="p">,</span> <span class="n">perm</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span>
+
+    <span class="c1"># solve the generalized poisson equation for V_R </span>
+    <span class="n">V_R_np1</span> <span class="o">=</span> <span class="n">Poisson_op</span><span class="p">((</span><span class="n">rho_eff</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">gamma_s</span><span class="p">))</span> 
+    <span class="n">dV_R</span> <span class="o">=</span> <span class="n">V_R_np1</span> <span class="o">-</span> <span class="n">V_R</span>
+    
+    <span class="n">update</span> <span class="o">=</span> <span class="n">dV_R</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span>
+    
+    <span class="n">V_R</span> <span class="o">=</span>  <span class="n">V_R</span> <span class="o">+</span> <span class="n">dV_R</span>
+    
+    <span class="n">E_r</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">vp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V_R</span><span class="p">,</span> <span class="n">dens</span><span class="p">)</span> <span class="c1"># computing energy</span>
+    
+    <span class="n">dE_r</span> <span class="o">=</span> <span class="n">E_r</span> <span class="o">-</span> <span class="n">E_r_old</span>
+    <span class="n">E_r_old</span> <span class="o">=</span> <span class="n">E_r</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}{</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">6</span><span class="si">}{</span><span class="n">V_R</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span><span class="si">:</span><span class="s2">14.7e</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">update</span><span class="si">:</span><span class="s2">14.7e</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">E_r</span><span class="si">:</span><span class="s2">14.7e</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">dE_r</span><span class="si">:</span><span class="s2">14.7e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">update</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">):</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;WARNING: SCRF did not converge&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter.  Norm            Update          Energy (a.u.)   Energy update (a.u.)
+---------------------------------------------------------------------------
+0       5.4607414e+00   2.8853494e+00  -2.4138496e-01  -2.4138496e-01
+1       6.1262685e+00   6.6570352e-01  -2.6637517e-01  -2.4990213e-02
+2       6.0111386e+00   1.1516806e-01  -2.6215285e-01   4.2223193e-03
+3       6.0270817e+00   1.5949632e-02  -2.6272795e-01  -5.7509706e-04
+4       6.0252390e+00   1.8435902e-03  -2.6266231e-01   6.5638875e-05
+5       6.0254219e+00   1.8305719e-04  -2.6266876e-01  -6.4520209e-06
+6       6.0254060e+00   1.5950934e-05  -2.6266820e-01   5.5755347e-07
+7       6.0254072e+00   1.2399247e-06  -2.6266825e-01  -4.3037920e-08
+</pre></div>
+</div>
+</div>
+</div>
+<p>The energy can then be computed as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">vp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V_R</span><span class="p">,</span> <span class="n">dens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.2626682475802428
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "MRChemSoft/vampyr-coven",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../harmonic_oscillator_evolution/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Schrödinger equation</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, The contributors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

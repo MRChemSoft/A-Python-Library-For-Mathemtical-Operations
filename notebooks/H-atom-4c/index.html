@@ -1,0 +1,731 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Dirac equation for the Hydrogen atom</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/H-atom-4c';</script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vampyr-logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/vampyr-logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../">
+                    VAMPyR coven
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../setup/">Setting up your system</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../beryllium_atom/">Beryllium atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../harmonic_oscillator_evolution/">The Schrödinger equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCMSolvent/">Polarizable continuum model (PCM)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MRChemSoft/vampyr-coven/main?urlpath=lab/tree/content/notebooks/H-atom-4c.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/edit/main/content/notebooks/H-atom-4c.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/issues/new?title=Issue%20on%20page%20%2Fnotebooks/H-atom-4c.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/H-atom-4c.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Dirac equation for the Hydrogen atom</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-dirac-equation-for-the-hydrogen-atom">
+<h1>The Dirac equation for the Hydrogen atom<a class="headerlink" href="#the-dirac-equation-for-the-hydrogen-atom" title="Permalink to this heading">#</a></h1>
+<p>In this notebook we will illustrate how one can solve the Dirac equation for a Hydrogen atom using the Multiwavelet framework provided by VAMPyR</p>
+<p>The Dirac equation can be coincisely written as follows:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3daa55c2-4512-47ad-8e13-55ac7be0d2e6">
+<span class="eqno">(1)<a class="headerlink" href="#equation-3daa55c2-4512-47ad-8e13-55ac7be0d2e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+(\beta m c^2+ c \boldsymbol{\alpha} \cdot \mathbf{p} + V) \phi = \epsilon \phi 
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\phi = (\phi^{L\alpha}, \phi^{L\beta}, \phi^{S\alpha}, \phi^{S\beta})^t\)</span> represents a 4-component spinor, $\boldsymbol{\alpha} =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8a490bf8-0795-4c7f-9149-bd1399664a8b">
+<span class="eqno">(2)<a class="headerlink" href="#equation-8a490bf8-0795-4c7f-9149-bd1399664a8b" title="Permalink to this equation">#</a></span>\[\begin{pmatrix}
+0_2 &amp; \boldsymbol{\sigma} \\
+\boldsymbol{\sigma} &amp; 0_2 &amp; 
+\end{pmatrix}\]</div>
+<p><span class="math notranslate nohighlight">\( and
+\)</span>\beta =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-934bc5ed-498c-4cdc-b14d-1c4bd3b607d7">
+<span class="eqno">(3)<a class="headerlink" href="#equation-934bc5ed-498c-4cdc-b14d-1c4bd3b607d7" title="Permalink to this equation">#</a></span>\[\begin{pmatrix}
+1_2 &amp; 0_2 \\
+0_2 &amp; -1_2
+\end{pmatrix}\]</div>
+<p><span class="math notranslate nohighlight">\( are the 4x4 Dirac matrices, \)</span>\boldsymbol{\sigma}<span class="math notranslate nohighlight">\( is a cartesian vector collecting the three 2x2 Pauli matrices, \)</span>\mathbf{p}<span class="math notranslate nohighlight">\( is the momentum operator, \)</span>c<span class="math notranslate nohighlight">\( is the speed of light, \)</span>m<span class="math notranslate nohighlight">\( is the electron mass and \)</span>V$ is the nuclear potential.</p>
+<p>As for the non-relativistic case,  the equation is first rewritten in its integral formulation:
+$<span class="math notranslate nohighlight">\(\phi = \frac{1}{2mc^2}(\beta m c^2+ c \boldsymbol{\alpha} \cdot \mathbf{p} + \epsilon) \left[ G_\mu \star (V \psi) \right]\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(G_\mu(x) = \frac{e^{-\mu |x|}}{4 \pi |x|}\)</span> is the Helmholtz Green’s kernel and <span class="math notranslate nohighlight">\(\mu = \sqrt{\frac{m^2c^4-\epsilon}{mc^2}}\)</span>. An initial guess can be obtained by taking a Slater orbital or a Gaussian function for the <span class="math notranslate nohighlight">\(\psi^{L\alpha}\)</span> component and then applying the restricted kinetic balance:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+\phi^{S\alpha} \\
+\phi^{S\beta}
+\end{pmatrix}
+= \frac{1}{2c}\boldsymbol{\sigma} \cdot \mathbf{p} 
+\begin{pmatrix}
+\phi^{L\alpha} \\
+0
+\end{pmatrix}
+\end{split}\]</div>
+<p>The guess obtained is then plugged into the integral form of the Dirac equation, which can then be iterated until convergence</p>
+<p>We start by loading the relevant packages: the 3d version of <code class="docutils literal notranslate"><span class="pre">vampyr</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, the <code class="docutils literal notranslate"><span class="pre">complex_function</span></code> class which deals with complex funtions and the <code class="docutils literal notranslate"><span class="pre">orbital</span></code> class which deals with 4-component spinors. Each complex function is handled as a pair of <code class="docutils literal notranslate"><span class="pre">function_tree</span></code>s and each spinor is handled as a 4c vector of complex functions. The <code class="docutils literal notranslate"><span class="pre">nuclear_potential</span></code> package is self-explanatory</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vampyr</span> <span class="kn">import</span> <span class="n">vampyr3d</span> <span class="k">as</span> <span class="n">vp</span>
+<span class="kn">from</span> <span class="nn">orbital4c</span> <span class="kn">import</span> <span class="n">orbital</span> <span class="k">as</span> <span class="n">orb</span>
+<span class="kn">from</span> <span class="nn">orbital4c</span> <span class="kn">import</span> <span class="n">nuclear_potential</span> <span class="k">as</span> <span class="n">nucpot</span>
+<span class="kn">from</span> <span class="nn">orbital4c</span> <span class="kn">import</span> <span class="n">complex_fcn</span> <span class="k">as</span> <span class="n">cf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a reference, the exact Dirac energy for the ground state Hydrogen atom is computed in the function below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">analytic_1s</span><span class="p">(</span><span class="n">light_speed</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">Z</span><span class="p">):</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">light_speed</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">compute_gamma</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="n">tmp1</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">gamma</span>
+    <span class="n">tmp2</span> <span class="o">=</span> <span class="n">Z</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">/</span> <span class="n">tmp1</span>
+    <span class="n">tmp3</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">tmp2</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">light_speed</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tmp3</span><span class="p">)</span>
+
+<span class="n">light_speed</span> <span class="o">=</span> <span class="mf">137.03599913900001</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">light_speed</span>
+<span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">atom</span> <span class="o">=</span> <span class="s2">&quot;H&quot;</span>
+
+<span class="n">energy_1s</span> <span class="o">=</span> <span class="n">analytic_1s</span><span class="p">(</span><span class="n">light_speed</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exact Energy&#39;</span><span class="p">,</span><span class="n">energy_1s</span> <span class="o">-</span> <span class="n">light_speed</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">flush</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exact Energy -0.5000066565989982
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">MultiResolutionAnalysis</span></code> object defining the simulation box is constructed and passed to the classes for complex functions and spinors</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mra</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">MultiResolutionAnalysis</span><span class="p">(</span><span class="n">box</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">prec</span> <span class="o">=</span> <span class="mf">1.0e-4</span>
+<span class="n">origin</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>  <span class="c1"># origin moved to avoid placing the nuclar charge on a node</span>
+
+<span class="n">orb</span><span class="o">.</span><span class="n">orbital4c</span><span class="o">.</span><span class="n">light_speed</span> <span class="o">=</span> <span class="n">light_speed</span>
+<span class="n">orb</span><span class="o">.</span><span class="n">orbital4c</span><span class="o">.</span><span class="n">mra</span> <span class="o">=</span> <span class="n">mra</span>
+<span class="n">cf</span><span class="o">.</span><span class="n">complex_fcn</span><span class="o">.</span><span class="n">mra</span> <span class="o">=</span> <span class="n">mra</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We construct a starting guess by taking a simple Gaussian function and initialize the real part of the <span class="math notranslate nohighlight">\(\phi^{L\alpha}\)</span> component of the spinor with it. Thereafter the restricted kinetic balance is employed. This is implemented in the <code class="docutils literal notranslate"><span class="pre">init_small_components</span></code> method of the <code class="docutils literal notranslate"><span class="pre">orbital</span></code> class</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_coeff</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">b_coeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a_coeff</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">gauss</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">GaussFunc</span><span class="p">(</span><span class="n">b_coeff</span><span class="p">,</span> <span class="n">a_coeff</span><span class="p">,</span> <span class="n">origin</span><span class="p">)</span>
+<span class="n">gauss_tree</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">FunctionTree</span><span class="p">(</span><span class="n">mra</span><span class="p">)</span>
+<span class="n">vp</span><span class="o">.</span><span class="n">advanced</span><span class="o">.</span><span class="n">build_grid</span><span class="p">(</span><span class="n">out</span><span class="o">=</span><span class="n">gauss_tree</span><span class="p">,</span> <span class="n">inp</span><span class="o">=</span><span class="n">gauss</span><span class="p">)</span>
+<span class="n">vp</span><span class="o">.</span><span class="n">advanced</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="n">prec</span><span class="o">=</span><span class="n">prec</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">gauss_tree</span><span class="p">,</span> <span class="n">inp</span><span class="o">=</span><span class="n">gauss</span><span class="p">)</span>
+<span class="n">gauss_tree</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+
+<span class="n">spinor_H</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">orbital4c</span><span class="p">()</span>
+<span class="n">La_comp</span> <span class="o">=</span> <span class="n">cf</span><span class="o">.</span><span class="n">complex_fcn</span><span class="p">()</span>
+<span class="n">La_comp</span><span class="o">.</span><span class="n">copy_fcns</span><span class="p">(</span><span class="n">real</span> <span class="o">=</span> <span class="n">gauss_tree</span><span class="p">)</span>
+<span class="n">spinor_H</span><span class="o">.</span><span class="n">copy_components</span><span class="p">(</span><span class="n">La</span> <span class="o">=</span> <span class="n">La_comp</span><span class="p">)</span>
+<span class="n">spinor_H</span><span class="o">.</span><span class="n">init_small_components</span><span class="p">(</span><span class="n">prec</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">spinor_H</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The nuclear potential is defined and projected onto the <code class="docutils literal notranslate"><span class="pre">V_tree</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Peps</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">ScalingProjector</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">nucpot</span><span class="o">.</span><span class="n">coulomb_HFYGB</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
+<span class="n">V_tree</span> <span class="o">=</span> <span class="n">Peps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">default_der</span> <span class="o">=</span> <span class="s1">&#39;BS&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The orbital is optimized by iterating the integral version of the Dirac equation as follows:</p>
+<ol class="arabic simple">
+<li><p>Application of the Dirac Hamiltonian <span class="math notranslate nohighlight">\(f^n = \hat{h}_D \phi^n = (\beta m c^2+ c \boldsymbol{\alpha} \cdot \mathbf{p}) \phi^n\)</span></p></li>
+<li><p>Application of the potnetial operator <span class="math notranslate nohighlight">\(g^n = \hat{V} \phi^n\)</span></p></li>
+<li><p>Sum <span class="math notranslate nohighlight">\(h^n = f^n + g^n\)</span></p></li>
+<li><p>Expectation value of the energy <span class="math notranslate nohighlight">\(\left\langle \phi^n | h^n \right\rangle\)</span></p></li>
+<li><p>Calculation of the Helmholtz parameter <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
+<li><p>Convolution with the Helmholtz kernel <span class="math notranslate nohighlight">\(t^n = G_\mu \star g^n\)</span></p></li>
+<li><p>application of the shifted Dirac Hamiltonian <span class="math notranslate nohighlight">\(\tilde{\phi}^{n+1} = (\hat{h}_D + \epsilon) t^n\)</span></p></li>
+<li><p>normalization of the new iterate</p></li>
+<li><p>calculation of the change in the orbital <span class="math notranslate nohighlight">\(\delta \phi^n = \phi^{n+1}-\phi^n\)</span></p></li>
+</ol>
+<p>Once the orbital error is below the requested threshold the iteration is interrupted and the final energy is computed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orbital_error</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">orbital_error</span> <span class="o">&gt;</span> <span class="n">prec</span><span class="p">:</span>
+    <span class="c1"># 1. Application of the Dirac Hamiltonian</span>
+    <span class="n">hd_psi</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">apply_dirac_hamiltonian</span><span class="p">(</span><span class="n">spinor_H</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">der</span> <span class="o">=</span> <span class="n">default_der</span><span class="p">)</span>
+    <span class="c1"># 2. Application of the potnetial operator</span>
+    <span class="n">v_psi</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">apply_potential</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">V_tree</span><span class="p">,</span> <span class="n">spinor_H</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
+    <span class="c1"># 3. Sum</span>
+    <span class="n">add_psi</span> <span class="o">=</span> <span class="n">hd_psi</span> <span class="o">+</span> <span class="n">v_psi</span>
+    <span class="c1"># 4. Expectation value of the energy</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="p">(</span><span class="n">spinor_H</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">add_psi</span><span class="p">))</span><span class="o">.</span><span class="n">real</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Energy&#39;</span><span class="p">,</span><span class="n">energy</span><span class="o">-</span><span class="n">light_speed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># 5. Calculation of the Helmholtz parameter</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">calc_dirac_mu</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">light_speed</span><span class="p">)</span>
+    <span class="c1"># 6. Convolution with the Helmholtz kernel</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">apply_helmholtz</span><span class="p">(</span><span class="n">v_psi</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
+    <span class="n">tmp</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="n">prec</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># 7. application of the shifted Dirac Hamiltonian</span>
+    <span class="n">new_orbital</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">apply_dirac_hamiltonian</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">der</span> <span class="o">=</span> <span class="n">default_der</span><span class="p">)</span> 
+    <span class="n">new_orbital</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="n">prec</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># 8. normalization of the new iterate</span>
+    <span class="n">new_orbital</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+    <span class="n">delta_psi</span> <span class="o">=</span> <span class="n">new_orbital</span> <span class="o">-</span> <span class="n">spinor_H</span>
+    <span class="c1"># 9. calculation of the change in the orbital</span>
+    <span class="n">orbital_error</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta_psi</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">delta_psi</span><span class="p">))</span><span class="o">.</span><span class="n">real</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span><span class="n">orbital_error</span><span class="p">,</span> <span class="n">flush</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">spinor_H</span> <span class="o">=</span> <span class="n">new_orbital</span>
+
+<span class="c1"># Computing the final energy</span>
+<span class="n">hd_psi</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">apply_dirac_hamiltonian</span><span class="p">(</span><span class="n">spinor_H</span><span class="p">,</span> <span class="n">prec</span><span class="p">,</span> <span class="n">der</span> <span class="o">=</span> <span class="n">default_der</span><span class="p">)</span>
+<span class="n">v_psi</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">apply_potential</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">V_tree</span><span class="p">,</span> <span class="n">spinor_H</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
+<span class="n">add_psi</span> <span class="o">=</span> <span class="n">hd_psi</span> <span class="o">+</span> <span class="n">v_psi</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="p">(</span><span class="n">spinor_H</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">add_psi</span><span class="p">))</span><span class="o">.</span><span class="n">real</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Final Energy&#39;</span><span class="p">,</span><span class="n">energy</span> <span class="o">-</span> <span class="n">light_speed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">energy_1s</span> <span class="o">=</span> <span class="n">analytic_1s</span><span class="p">(</span><span class="n">light_speed</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exact Energy&#39;</span><span class="p">,</span><span class="n">energy_1s</span> <span class="o">-</span> <span class="n">light_speed</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Difference&#39;</span><span class="p">,</span><span class="n">energy_1s</span> <span class="o">-</span> <span class="n">energy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Energy -0.14180720307558659
+Error 0.3648353655184581
+Energy -0.49611934473068686
+Error 0.0024839139737050653
+Energy -0.4997319277244969
+Error 0.00023304055836475225
+Energy -0.49998214000152075
+Error 2.3987883028320866e-05
+Final Energy -0.5000042447172746
+Exact Energy -0.5000066565989982
+Difference -2.411881723674014e-06
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "MRChemSoft/vampyr-coven",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, The contributors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

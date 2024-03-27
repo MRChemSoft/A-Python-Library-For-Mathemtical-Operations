@@ -1,0 +1,984 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The Schrödinger equation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/term_role_formatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/harmonic_oscillator_evolution';</script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Polarizable continuum model (PCM)" href="../PCMSolvent/" />
+    <link rel="prev" title="Beryllium atom" href="../beryllium_atom/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vampyr-logo.png" class="logo__image only-light" alt=" - Home"/>
+    <script>document.write(`<img src="../../_static/vampyr-logo.png" class="logo__image only-dark" alt=" - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../">
+                    VAMPyR coven
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../setup/">Setting up your system</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Demos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../beryllium_atom/">Beryllium atom</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Schrödinger equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PCMSolvent/">Polarizable continuum model (PCM)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MRChemSoft/vampyr-coven/main?urlpath=lab/tree/content/notebooks/harmonic_oscillator_evolution.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/edit/main/content/notebooks/harmonic_oscillator_evolution.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MRChemSoft/vampyr-coven/issues/new?title=Issue%20on%20page%20%2Fnotebooks/harmonic_oscillator_evolution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/harmonic_oscillator_evolution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Schrödinger equation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Schrödinger equation&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s2">&quot;Evgueni Dinvay&quot;</span>
+<span class="n">__credit__</span>    <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Evgueni Dinvay&quot;</span><span class="p">]</span>
+
+<span class="n">__date__</span>      <span class="o">=</span> <span class="s2">&quot;2023-11-24&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="the-schrodinger-equation">
+<h1>The Schrödinger equation<a class="headerlink" href="#the-schrodinger-equation" title="Permalink to this heading">#</a></h1>
+<p>Here we demonstrate how the multiwavelets machinery can be exploited for time evolution simulations
+of the following one dimensional equation</p>
+<div class="amsmath math notranslate nohighlight" id="equation-740ed940-37b6-4d57-ad02-149f2e8ebf0d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-740ed940-37b6-4d57-ad02-149f2e8ebf0d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    i \partial_t \Psi
+    =
+    \left( - \partial_x^2 + V(x) \right) \Psi
+    ,
+\end{equation}\]</div>
+<p>where we restrict ourselves to consideration of a time independent potential <span class="math notranslate nohighlight">\(V\)</span>.
+This equation is complemented by a given initial wave function <span class="math notranslate nohighlight">\(\Psi(x, 0) = \Psi_0(x)\)</span>.
+As an example, we take a harmonic potential and a gaussian initial wave packet.</p>
+<p>A common way of numerical treatment of this equation
+is to choose a small time step <span class="math notranslate nohighlight">\(t &gt; 0\)</span> and construct the time evolution operator</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8d7cc13a-1fe4-46a8-ab48-ada7a6d108b7">
+<span class="eqno">(2)<a class="headerlink" href="#equation-8d7cc13a-1fe4-46a8-ab48-ada7a6d108b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \Psi(t)
+    =
+    \exp
+    \left(
+        i t \partial_x^2 -i t V
+    \right)
+    \Psi_0
+\end{equation}\]</div>
+<p>on interval <span class="math notranslate nohighlight">\([0, t]\)</span>.
+Then applying it iteratively one can arrive to the solution
+at some given finite time moment,
+thanks to the semigroup property of the propagator.
+As we normally do not have an access to the full collection of eigenfunctions and eigenvalues
+for the Hamiltonian, we have to split the propagator on kinetic
+<span class="math notranslate nohighlight">\(
+    \exp
+    \left(
+        i t \partial_x^2
+    \right)
+\)</span>
+and potential
+<span class="math notranslate nohighlight">\(
+    \exp
+    \left(
+        -i t V
+    \right)
+\)</span>
+parts.
+Note that the latter is a multiplication operator in the physical space.</p>
+<p>We will make use of the following fourth order scheme</p>
+<div class="amsmath math notranslate nohighlight" id="equation-219f5802-c93f-41a6-a36a-5c0e8dc3874e">
+<span class="eqno">(3)<a class="headerlink" href="#equation-219f5802-c93f-41a6-a36a-5c0e8dc3874e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \exp ( At + Bt )
+    =
+    \exp \left(  \frac t6  B \right)
+    \exp \left(  \frac t2  A \right)
+    \exp \left(  \frac {2t}3  \widetilde B \right)
+    \exp \left(  \frac t2  A \right)
+    \exp \left(  \frac t6  B \right)
+    +
+    \mathcal O \left( t^5 \right)
+    ,
+\end{equation}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-66b3eac5-2aae-40fe-8624-38789cdfec78">
+<span class="eqno">(4)<a class="headerlink" href="#equation-66b3eac5-2aae-40fe-8624-38789cdfec78" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \widetilde B
+    =
+    B
+    +
+    \frac{t^2}{48}
+    [ B, [A, B]]
+    .
+\end{equation}\]</div>
+<p>In the case of <span class="math notranslate nohighlight">\(A = i \partial_x^2\)</span> and <span class="math notranslate nohighlight">\(B = -i V\)</span>
+this
+<span class="math notranslate nohighlight">\(
+    \widetilde B
+\)</span>
+turns out to be a multiplication operator containing potential gradient <span class="math notranslate nohighlight">\(\partial_x V(x)\)</span>.
+Remarkably,
+this high order scheme requires only two applications
+of the free-particle semigroup operator
+<span class="math notranslate nohighlight">\(
+    \exp \left(  it  \partial_x^2 / 2 \right)
+\)</span>
+per time step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ChinChenA</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expA</span><span class="p">,</span> <span class="n">expB</span><span class="p">,</span> <span class="n">exp_tildeB</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expA</span> <span class="o">=</span> <span class="n">expA</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expB</span> <span class="o">=</span> <span class="n">expB</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exp_tildeB</span> <span class="o">=</span> <span class="n">exp_tildeB</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expB</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>        <span class="c1"># 1/6*dt</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expA</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>        <span class="c1"># 1/2*dt</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">exp_tildeB</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>  <span class="c1"># 2/3*dt</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expA</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>        <span class="c1"># 1/2*dt</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expB</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>        <span class="c1"># 1/6*dt</span>
+        <span class="k">return</span> <span class="n">u</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">expA</span></code>: stands for operator <span class="math notranslate nohighlight">\(\exp \left(  \frac t2  A \right) = \exp \left(  i \frac t2  \partial_x^2 \right)\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">expB</span></code>: stands for operator <span class="math notranslate nohighlight">\(\exp \left(  \frac t6  B \right) = \exp \left(  -i \frac t6  V \right)\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">exp_tildeB</span></code>: stands for operator
+<span class="math notranslate nohighlight">\(
+    \exp \left(  \frac {2t}3  \widetilde B \right) = \exp \left(  -i \frac {2t}3  \widetilde V \right)
+\)</span>
+with
+<span class="math notranslate nohighlight">\(
+    \widetilde V
+    =
+    V
+    -
+    \frac{t^2}{24}
+    ( \partial_x V )^2
+\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">vampyr</span> <span class="kn">import</span> <span class="n">vampyr1d</span> <span class="k">as</span> <span class="n">vp1</span>
+<span class="kn">from</span> <span class="nn">vampyr</span> <span class="kn">import</span> <span class="n">LegendreBasis</span>
+
+<span class="c1"># Define parameters, final time moment and time step</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.04</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mi">25000</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">t_period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
+<span class="n">time_step</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">t_period</span> <span class="o">/</span> <span class="n">N</span>
+
+<span class="c1"># Set the precision and make the MRA</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="mf">1.0e-5</span>
+<span class="n">finest_scale</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">mra</span> <span class="o">=</span> <span class="n">vp1</span><span class="o">.</span><span class="n">MultiResolutionAnalysis</span><span class="p">(</span><span class="n">vp1</span><span class="o">.</span><span class="n">BoundingBox</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">LegendreBasis</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Make the scaling projector</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">vp1</span><span class="o">.</span><span class="n">ScalingProjector</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">prec</span> <span class="o">=</span> <span class="n">precision</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MultiplicationOperator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">*</span> <span class="n">function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    U
+    =
+    U \left( \widehat H, t \right)
+    =
+    \exp \left( -i \widehat H t \right)
+    =
+    \begin{pmatrix}
+        \cos \widehat H t
+        &amp;
+        \sin \widehat H t
+        \\
+        - \sin \widehat H t
+        &amp;
+        \cos \widehat H t
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \Re U
+        &amp;
+        -\Im U
+        \\
+        \Im U
+        &amp;
+        \Re U
+    \end{pmatrix}
+\end{equation*}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UnitaryExponentGroup</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">real</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">imag</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">psi</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">psi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">psi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">res0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">res1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">res0</span><span class="p">,</span> <span class="n">res1</span> <span class="p">])</span>     
+</pre></div>
+</div>
+</div>
+</div>
+<p>The unitary potential semigroup operator</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    U
+    =
+    U \left( V, t \right)
+    =
+    \exp \left( -i V t \right)
+    \approx
+    \begin{pmatrix}
+        P \cos (V t)
+        &amp;
+        P \sin (V t)
+        \\
+        - P \sin (V t)
+        &amp;
+        P \cos (V t)
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        P \Re \exp \left( -i V t \right)
+        &amp;
+        - P \Im \exp \left( -i V t \right)
+        \\
+        P \Im \exp \left( -i V t \right)
+        &amp;
+        P \Re \exp \left( -i V t \right)
+    \end{pmatrix}
+\end{equation*}\]</div>
+<p>which should be understood as a multiplication operator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_unitary_potential_operator</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">real</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">real</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">imag</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">V</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">imag</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">imag</span><span class="p">)</span>
+    <span class="n">real</span> <span class="o">=</span> <span class="n">MultiplicationOperator</span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
+    <span class="n">imag</span> <span class="o">=</span> <span class="n">MultiplicationOperator</span><span class="p">(</span><span class="n">imag</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">UnitaryExponentGroup</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Schrodinger free-particle semigroup operator</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    U
+    =
+    U \left( \widehat T, t \right)
+    =
+    U \left( - \partial_x^2, t \right)
+    =
+    \exp \left( it \partial_x^2 \right)
+    =
+    \begin{pmatrix}
+        \Re \exp \left( it \partial_x^2 \right)
+        &amp;
+        - \Im \exp \left( it \partial_x^2 \right)
+        \\
+        \Im \exp \left( it \partial_x^2 \right)
+        &amp;
+        \Re \exp \left( it \partial_x^2 \right)
+    \end{pmatrix}
+\end{equation*}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_unitary_kinetic_operator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">finest_scale</span><span class="p">):</span>
+    <span class="n">real</span> <span class="o">=</span> <span class="n">vp1</span><span class="o">.</span><span class="n">TimeEvolutionOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">finest_scale</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">imag</span> <span class="o">=</span> <span class="n">vp1</span><span class="o">.</span><span class="n">TimeEvolutionOperator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">finest_scale</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">UnitaryExponentGroup</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is well known that in the harmonic potential
+<span class="math notranslate nohighlight">\(
+    V(x) = V_0 (x - x_1)^2
+\)</span>
+the density
+<span class="math notranslate nohighlight">\(
+    \left| \Psi(t) \right|^2
+\)</span>
+oscillates with the period
+<span class="math notranslate nohighlight">\(
+    t_{\text{period}} = \pi / \sqrt{V_0}
+    .
+\)</span>
+More precisely,
+<span class="math notranslate nohighlight">\(
+    \Psi \left( t_{\text{period}} \right) = - \Psi_0
+    .
+\)</span>
+This can immediately be seen taking into account that
+the eigenvalues for the Hamiltonian are
+<span class="math notranslate nohighlight">\(
+    \sqrt{V_0} ( 2n + 1)
+    .
+\)</span></p>
+<p>For the time step <span class="math notranslate nohighlight">\(t\)</span> the scheme modification potential
+<span class="math notranslate nohighlight">\(
+    \widetilde V
+    =
+    V
+    -
+    \frac{t^2}{24}
+    ( \partial_x V )^2
+    =
+    \widetilde V_0 (x - x_0)^2
+\)</span>
+where
+<span class="math notranslate nohighlight">\(
+    \widetilde V_0
+    =
+    V_0
+    -
+    \frac{(tV_0)^2}6
+    .
+\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the harmonic potential with its scheme modification</span>
+<span class="k">def</span> <span class="nf">V</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">V0</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">def</span> <span class="nf">tilde_V</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">-</span> <span class="p">(</span> <span class="n">time_step</span> <span class="o">*</span> <span class="n">V0</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mf">6.0</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Define the iteration procedure</span>
+<span class="n">iteratorA</span> <span class="o">=</span> <span class="n">ChinChenA</span><span class="p">(</span>
+    <span class="n">expA</span> <span class="o">=</span> <span class="n">create_unitary_kinetic_operator</span><span class="p">(</span><span class="n">mra</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">time_step</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">finest_scale</span><span class="p">),</span>
+    <span class="n">expB</span> <span class="o">=</span> <span class="n">create_unitary_potential_operator</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">time_step</span> <span class="o">/</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="n">exp_tildeB</span> <span class="o">=</span> <span class="n">create_unitary_potential_operator</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">tilde_V</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">time_step</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let an initial condition be of the form</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \Psi_0(x)
+    =
+    \left(
+        \frac 1{2 \pi \sigma^2}
+    \right)^{1/4}
+    \exp
+    \left(
+        - \frac {(x - x_0)^2}{4 \sigma^2}
+    \right)
+\end{equation*}\]</div>
+<p>with <span class="math notranslate nohighlight">\(x_0 = 0.3\)</span> and <span class="math notranslate nohighlight">\(\sigma = 0.04\)</span>.
+All the parameters are chosen in a way that the solution
+stays localized mainly on the space interval <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the initial wave function</span>
+<span class="n">psi0</span> <span class="o">=</span> <span class="n">vp1</span><span class="o">.</span><span class="n">GaussFunc</span><span class="p">(</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="n">position</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">psi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">P</span><span class="p">(</span><span class="n">psi0</span><span class="p">),</span> <span class="n">vp1</span><span class="o">.</span><span class="n">FunctionTree</span><span class="p">(</span><span class="n">mra</span><span class="p">)</span><span class="o">.</span><span class="n">setZero</span><span class="p">()</span> <span class="p">])</span>
+
+<span class="c1"># Plot the initial density</span>
+<span class="n">x_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">real_psi0_plt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span> <span class="n">psi0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">psi0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">psi0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">psi0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)([</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_vec</span> <span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vec</span><span class="p">,</span> <span class="n">real_psi0_plt</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="c1"># Solve the initial value problem and plot the result</span>
+<span class="n">psiA</span> <span class="o">=</span> <span class="n">psi0</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">psiA</span> <span class="o">=</span> <span class="n">iteratorA</span><span class="p">(</span><span class="n">psiA</span><span class="p">)</span>
+    <span class="n">densityA</span> <span class="o">=</span> <span class="n">psiA</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">psiA</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">psiA</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">psiA</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">densityA_plt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">densityA</span><span class="p">([</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_vec</span> <span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vec</span><span class="p">,</span> <span class="n">densityA_plt</span> <span class="p">,</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$| \Psi(x, t) |^2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Density time evolution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/dc5abca5e1bf9d2bfe01fb6245c5a5eae3c35a54e9dc2423733f12d55ac4a0ab.png" src="../../_images/dc5abca5e1bf9d2bfe01fb6245c5a5eae3c35a54e9dc2423733f12d55ac4a0ab.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Continue solving until t = period </span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">psiA</span> <span class="o">=</span> <span class="n">iteratorA</span><span class="p">(</span><span class="n">psiA</span><span class="p">)</span>
+
+<span class="c1"># Find error at t = period</span>
+<span class="n">per_errorA</span> <span class="o">=</span> <span class="n">psiA</span> <span class="o">+</span> <span class="n">psi0</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;L2-norm of real part error:      </span><span class="si">{</span><span class="n">per_errorA</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;L2-norm of imaginary part error: </span><span class="si">{</span><span class="n">per_errorA</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">norm</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+
+<span class="n">real_psi_plt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">per_errorA</span><span class="p">[</span><span class="mi">0</span><span class="p">]([</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_vec</span> <span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vec</span><span class="p">,</span> <span class="n">real_psi_plt</span> <span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Re$( \Psi(x, t_{ \text</span><span class="si">{period}</span><span class="s1"> }) + \Psi_0(x) )$&#39;</span><span class="p">)</span>
+
+<span class="n">imag_psi_plt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">per_errorA</span><span class="p">[</span><span class="mi">1</span><span class="p">]([</span><span class="n">x</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_vec</span> <span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vec</span><span class="p">,</span> <span class="n">imag_psi_plt</span> <span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Im$( \Psi(x, t_{ \text</span><span class="si">{period}</span><span class="s1"> }) + \Psi_0(x) )$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Difference with the exact solution at $t = t_{ \text</span><span class="si">{period}</span><span class="s1"> }$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2-norm of real part error:      0.00011595685155302059
+L2-norm of imaginary part error: 9.475768012015029e-05
+</pre></div>
+</div>
+<img alt="../../_images/09fe80c6ba25ad729eef61b8d00eff57e6462b1be2e6ed7dff34d39e689c9bf2.png" src="../../_images/09fe80c6ba25ad729eef61b8d00eff57e6462b1be2e6ed7dff34d39e689c9bf2.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "MRChemSoft/vampyr-coven",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../beryllium_atom/"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Beryllium atom</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../PCMSolvent/"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Polarizable continuum model (PCM)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, The contributors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
